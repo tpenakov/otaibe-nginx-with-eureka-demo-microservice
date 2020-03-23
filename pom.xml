@@ -8,7 +8,10 @@
     <version>00.00.01-SNAPSHOT</version>
 
     <properties>
-        <org.otaibe.commons.quarkus.version>elasticsearch-example.02</org.otaibe.commons.quarkus.version>
+        <!--<otaibe-commons-quarkus.groupId>org.otaibe.commons.quarkus</otaibe-commons-quarkus.groupId>-->
+        <otaibe-commons-quarkus.groupId>com.github.tpenakov.otaibe-commons-quarkus</otaibe-commons-quarkus.groupId>
+        <!--<org.otaibe.commons.quarkus.version>00.00.05-SNAPSHOT</org.otaibe.commons.quarkus.version>-->
+        <org.otaibe.commons.quarkus.version>00.00.05</org.otaibe.commons.quarkus.version>
         <quarkus-plugin.version>1.3.0.Final</quarkus-plugin.version>
         <quarkus.platform.version>1.3.0.Final</quarkus.platform.version>
 
@@ -42,12 +45,12 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>com.github.tpenakov.otaibe-commons-quarkus</groupId>
+            <groupId>${otaibe-commons-quarkus.groupId}</groupId>
             <artifactId>otaibe-commons-quarkus-core</artifactId>
             <version>${org.otaibe.commons.quarkus.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.tpenakov.otaibe-commons-quarkus</groupId>
+            <groupId>${otaibe-commons-quarkus.groupId}</groupId>
             <artifactId>otaibe-commons-quarkus-eureka-client</artifactId>
             <version>${org.otaibe.commons.quarkus.version}</version>
         </dependency>
@@ -67,6 +70,21 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>smallrye-mutiny-vertx-web-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <classifier>linux-x86_64</classifier>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-kqueue</artifactId>
+            <classifier>osx-x86_64</classifier>
         </dependency>
 
         <dependency>
