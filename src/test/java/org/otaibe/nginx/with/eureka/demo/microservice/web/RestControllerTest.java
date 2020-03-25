@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.text.MessageFormat;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.startsWith;
 
 @QuarkusTest
@@ -18,6 +17,8 @@ public class RestControllerTest {
 
     @ConfigProperty(name = "quarkus.application.name")
     String appName;
+    @ConfigProperty(name = "quarkus.http.port")
+    String appPort;
 
     @Test
     public void testHelloEndpoint() {
@@ -25,7 +26,8 @@ public class RestControllerTest {
           .when().get("/rest")
           .then()
              .statusCode(200)
-             .body(startsWith(MessageFormat.format("application-name={0};", getAppName())));
+             .body(startsWith(MessageFormat.format("application-name={0}-{1};",
+                     getAppName(), getAppPort())));
     }
 
 }
