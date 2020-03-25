@@ -4,6 +4,19 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Build docker image and run
+
+How to build:
+- From project folder execute
+```
+mvn clean package -Pnative -Dquarkus.native.container-build=true
+docker build -f src/main/docker/Dockerfile.native -t triphon/otaibe-nginx-with-eureka-demo-microservice .
+```
+- Now you can start a few docker containers (from the project folder):
+```
+bash src/test/resources/shell/docker_run.sh
+```
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:

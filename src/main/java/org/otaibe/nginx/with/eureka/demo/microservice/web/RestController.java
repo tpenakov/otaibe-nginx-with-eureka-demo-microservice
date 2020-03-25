@@ -2,7 +2,6 @@ package org.otaibe.nginx.with.eureka.demo.microservice.web;
 
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.ws.rs.GET;
@@ -18,12 +17,15 @@ public class RestController {
 
     @ConfigProperty(name = "quarkus.application.name")
     String appName;
+    @ConfigProperty(name = "quarkus.http.port")
+    String appPort;
 
     private String appId = UUID.randomUUID().toString();
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return MessageFormat.format("application-name={0}; applicationid={1}", getAppName(), getAppId());
+        return MessageFormat.format("application-name={0}-{2}; applicationid={1}",
+                getAppName(), getAppId(), getAppPort());
     }
 }
